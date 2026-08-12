@@ -9,10 +9,8 @@
 
     <title>Sign Up - Madiha Digital Store</title>
 
-    <!-- Browser Tab Image -->
-    <link rel="icon" type="image/png" href="imge3.png.png">
+    <link rel="icon" type="image/png" href="imge2.png.png">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -20,140 +18,393 @@
 <body>
 
 
-    <!-- HEADER -->
+<header>
 
-    <header>
+    <img
+        src="imge2.png.png.png"
+        alt="Madiha"
+        class="profile-pic"
+    >
 
-        <!-- Madiha DP -->
+    <h1>Madiha Digital Store</h1>
 
-        <img
-            src="imge2.png.png.png"
-            alt="Madiha"
-            class="profile-pic"
-        >
+    <p>Create Your Account</p>
 
-        <h1>Madiha Digital Store</h1>
-
-        <p>Create Your Account</p>
-
-    </header>
+</header>
 
 
-    <!-- SIGN UP SECTION -->
 
-    <section class="order-section">
+<section class="order-section">
 
-        <div class="order-card">
+    <div class="order-card">
 
-            <h2>Create Account</h2>
+        <h2>Create Account</h2>
 
-            <p class="order-subtitle">
-                Sign up to continue
-            </p>
-
-
-            <!-- FULL NAME -->
-
-            <label for="signupName">
-                Full Name
-            </label>
-
-            <input
-                type="text"
-                id="signupName"
-                placeholder="Enter your full name"
-            >
-
-
-            <!-- EMAIL -->
-
-            <label for="signupEmail">
-                Email Address
-            </label>
-
-            <input
-                type="email"
-                id="signupEmail"
-                placeholder="Enter your email"
-            >
-
-
-            <!-- PASSWORD -->
-
-            <label for="signupPassword">
-                Password
-            </label>
-
-            <input
-                type="password"
-                id="signupPassword"
-                placeholder="Create a password"
-            >
-
-
-            <!-- CONFIRM PASSWORD -->
-
-            <label for="confirmPassword">
-                Confirm Password
-            </label>
-
-            <input
-                type="password"
-                id="confirmPassword"
-                placeholder="Confirm your password"
-            >
-
-
-            <!-- CREATE ACCOUNT -->
-
-            <button
-                type="button"
-                class="order-btn"
-                id="signupButton"
-            >
-                Create Account
-            </button>
-
-
-            <!-- LOGIN -->
-
-            <a
-                href="login.html"
-                class="back-btn"
-            >
-                Already have an account? Login
-            </a>
-
-
-            <!-- BACK TO STORE -->
-
-            <a
-                href="index.html"
-                class="back-btn"
-            >
-                ← Back to Store
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <p>
-            © 2026 Madiha Digital Store.
-            All Rights Reserved.
+        <p class="order-subtitle">
+            Sign up to continue
         </p>
 
-    </footer>
+
+        <label for="signupName">
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            id="signupName"
+            placeholder="Enter your full name"
+        >
 
 
-    <!-- SIGN UP JAVASCRIPT -->
+        <label for="signupEmail">
+            Email Address
+        </label>
 
-    <script src="signup.js"></script>
+        <input
+            type="email"
+            id="signupEmail"
+            placeholder="Enter your email"
+        >
+
+
+        <label for="signupPassword">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="signupPassword"
+            placeholder="Create a password"
+        >
+
+
+        <label for="confirmPassword">
+            Confirm Password
+        </label>
+
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm your password"
+        >
+
+
+        <button
+            type="button"
+            class="order-btn"
+            id="signupButton"
+        >
+            Create Account
+        </button>
+
+
+        <p
+            id="signupMessage"
+            style="
+                text-align: center;
+                margin-top: 15px;
+            "
+        ></p>
+
+
+        <a
+            href="login.html"
+            class="back-btn"
+        >
+            Already have an account? Login
+        </a>
+
+
+        <a
+            href="index.html"
+            class="back-btn"
+        >
+            ← Back to Store
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<footer>
+
+    <p>
+        © 2026 Madiha Digital Store.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+<script type="module">
+
+    import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        updateProfile
+    }
+    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+    import {
+        getFirestore,
+        doc,
+        setDoc,
+        serverTimestamp
+    }
+    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+    const firebaseConfig = {
+
+        apiKey:
+            "AIzaSyC5bLBjzBe65W897lAyQ04HJy2P5T2pX0Y",
+
+        authDomain:
+            "madiha-digital-store.firebaseapp.com",
+
+        projectId:
+            "madiha-digital-store",
+
+        storageBucket:
+            "madiha-digital-store.firebasestorage.app",
+
+        messagingSenderId:
+            "450607238935",
+
+        appId:
+            "1:450607238935:web:eb9a366df863f6bcad3152",
+
+        measurementId:
+            "G-H7MDD1B8Q0"
+
+    };
+
+
+    const app =
+        initializeApp(firebaseConfig);
+
+
+    const auth =
+        getAuth(app);
+
+
+    const db =
+        getFirestore(app);
+
+
+    const signupButton =
+        document.getElementById("signupButton");
+
+
+    const message =
+        document.getElementById("signupMessage");
+
+
+    signupButton.addEventListener(
+        "click",
+        async function () {
+
+
+            const name =
+                document
+                    .getElementById("signupName")
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("signupEmail")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("signupPassword")
+                    .value;
+
+
+            const confirmPassword =
+                document
+                    .getElementById("confirmPassword")
+                    .value;
+
+
+            message.textContent = "";
+
+
+            if (
+                !name ||
+                !email ||
+                !password ||
+                !confirmPassword
+            ) {
+
+                message.textContent =
+                    "Please fill all fields.";
+
+                return;
+
+            }
+
+
+            if (
+                password !== confirmPassword
+            ) {
+
+                message.textContent =
+                    "Passwords do not match.";
+
+                return;
+
+            }
+
+
+            if (
+                password.length < 6
+            ) {
+
+                message.textContent =
+                    "Password must be at least 6 characters.";
+
+                return;
+
+            }
+
+
+            signupButton.disabled = true;
+
+            signupButton.textContent =
+                "Creating Account...";
+
+
+            try {
+
+
+                const userCredential =
+                    await createUserWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                const user =
+                    userCredential.user;
+
+
+                await updateProfile(
+                    user,
+                    {
+                        displayName: name
+                    }
+                );
+
+
+                await setDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    ),
+                    {
+
+                        name: name,
+
+                        email: email,
+
+                        createdAt:
+                            serverTimestamp()
+
+                    }
+                );
+
+
+                message.textContent =
+                    "Account created successfully! ❤️";
+
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "index.html";
+
+                    },
+                    1500
+                );
+
+
+            }
+
+            catch (error) {
+
+
+                console.error(error);
+
+
+                if (
+                    error.code ===
+                    "auth/email-already-in-use"
+                ) {
+
+                    message.textContent =
+                        "This email is already registered. Please Login.";
+
+                }
+
+                else if (
+                    error.code ===
+                    "auth/invalid-email"
+                ) {
+
+                    message.textContent =
+                        "Please enter a valid email.";
+
+                }
+
+                else if (
+                    error.code ===
+                    "auth/weak-password"
+                ) {
+
+                    message.textContent =
+                        "Password must be at least 6 characters.";
+
+                }
+
+                else {
+
+                    message.textContent =
+                        "Error: " +
+                        error.message;
+
+                }
+
+
+                signupButton.disabled =
+                    false;
+
+
+                signupButton.textContent =
+                    "Create Account";
+
+            }
+
+        }
+    );
+
+</script>
+
 
 </body>
 
