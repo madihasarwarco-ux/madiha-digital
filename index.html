@@ -1,14 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madiha Digital Store</title>
-</head>
-<body>
-    
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
 
@@ -18,179 +9,251 @@
 
     <title>Madiha Digital Store</title>
 
+    <!-- Browser Tab Image / Favicon -->
+    <link rel="icon" type="image/png" href="imge3.png.png">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <link rel="icon" type="image/png" href="cream1.png">
-
 </head>
-
 
 <body>
 
 
-<!-- HEADER -->
+    <!-- HEADER -->
 
-<header>
+    <header>
 
-    <h1>Madiha Digital Store</h1>
-
-    <p>Quality Products at Great Prices</p>
-
-</header>
-
-
-<!-- HERO SECTION -->
-
-<section class="hero">
-
-    <h2>Our Products</h2>
-
-    <p>Discover our quality creams</p>
-
-</section>
-
-
-<!-- PRODUCT SECTION -->
-
-<section class="product-section">
-
-
-    <!-- FIRST PRODUCT -->
-
-    <div class="product-card">
-
-        <!-- PRODUCT IMAGE -->
+        <!-- Small Profile Picture / DP -->
 
         <img
-            src="imge1.png.png"
-            alt="Natural Radiance Cream"
+            src="imge2.png.png.png"
+            alt="Madiha"
+            class="profile-pic"
         >
 
+        <h1>Madiha Digital Store</h1>
 
-        <!-- PRODUCT INFORMATION -->
-
-        <div class="product-info">
-
-            <h3>Natural Radiance Cream</h3>
-
-            <p class="description">
-                A beautifully presented cream for your daily skincare routine.
-            </p>
+        <p>Quality Products at Great Prices</p>
 
 
-            <!-- PRICE -->
+        <!-- LOGIN / SIGN UP -->
 
-            <div>
+        <div class="account-buttons">
 
-                <span class="old-price">
-                    Rs. 5,000
+            <a
+                href="login.html"
+                class="account-btn"
+            >
+                Login
+            </a>
+
+            <a
+                href="signup.html"
+                class="account-btn signup-btn"
+            >
+                Sign Up
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h2>Our Products</h2>
+
+        <p>Discover our quality creams</p>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section class="product-section">
+
+
+        <!-- FACE CREAM -->
+
+        <div class="product-card">
+
+            <img
+                src="imge1.png.png"
+                alt="Natural Radiance Face Cream"
+            >
+
+            <div class="product-info">
+
+                <h3>Natural Radiance Face Cream</h3>
+
+                <p class="description">
+                    Premium face cream for your daily skincare routine.
+                </p>
+
+                <div class="price-box">
+
+                    <span class="new-price">
+                        Rs. 600
+                    </span>
+
+                </div>
+
+                <span class="offer">
+                    Special Price
                 </span>
 
-                <span class="new-price">
-                    Rs. 2500
-                </span>
+                <a
+                    href="place-order.html"
+                    class="buy-btn"
+                >
+                    Buy Now
+                </a>
 
             </div>
 
-
-            <!-- OFFER -->
-
-            <span class="offer">
-                Special Price
-            </span>
+        </div>
 
 
-            <!-- BUY BUTTON -->
+        <!-- HATHON PAO KI CREAM -->
 
-            <a
-                href="place-order.html"
-                class="buy-btn"
+        <div class="product-card">
+
+            <img
+                src="imge3.png.png.png"
+                alt="Hathon Pao Ki Cream"
             >
-                Buy Now
-            </a>
+
+            <div class="product-info">
+
+                <h3>Hathon Pao Ki Cream</h3>
+
+                <p class="description">
+                    Special cream for soft and beautiful hands and feet.
+                </p>
+
+                <div class="price-box">
+
+                    <span class="new-price">
+                        Rs. 700
+                    </span>
+
+                </div>
+
+                <span class="offer">
+                    Special Price
+                </span>
+
+                <a
+                    href="place-order.html"
+                    class="buy-btn"
+                >
+                    Buy Now
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Madiha Digital Store.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- CHAT BUTTON -->
+
+    <button
+        class="chat-button"
+        id="chatButton"
+        type="button"
+    >
+        💬
+    </button>
+
+
+    <!-- CHAT BOX -->
+
+    <div
+        class="chat-box"
+        id="chatBox"
+    >
+
+        <div class="chat-header">
+
+            <strong>
+                Chat with Madiha
+            </strong>
+
+            <button
+                id="closeChat"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="chat-messages"
+            id="chatMessages"
+        >
+
+            <div class="message received">
+                Assalam-o-Alaikum! 👋
+                How can I help you?
+            </div>
+
+        </div>
+
+
+        <div class="chat-input-area">
+
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Write your message..."
+            >
+
+            <button
+                type="button"
+                id="sendMessage"
+            >
+                Send
+            </button>
 
         </div>
 
     </div>
 
 
-    <!-- SECOND PRODUCT -->
+    <!-- WHATSAPP BUTTON -->
 
-    <div class="product-card">
-
-        <!-- PRODUCT IMAGE -->
-
-        <img
-    src="imge3.png.png.png"
-    alt="Hathon Pao Ki Cream"
->
-
-
-        <!-- PRODUCT INFORMATION -->
-
-        <div class="product-info">
-
-            <h3>Hathon Pao Ki Cream</h3>
-
-            <p class="description">
-                A specially presented cream for your hands and feet.
-            </p>
+    <a
+        href="https://wa.me/923467640372"
+        class="whatsapp-btn"
+        target="_blank"
+    >
+        WhatsApp
+    </a>
 
 
-            <!-- PRICE -->
+    <!-- JAVASCRIPT -->
 
-            <div>
-
-                <span class="old-price">
-                    Rs. 2,000
-                </span>
-
-                <span class="new-price">
-                    Rs. 1,500
-                </span>
-
-            </div>
-
-
-            <!-- OFFER -->
-
-            <span class="offer">
-                Special Price
-            </span>
-
-
-            <!-- BUY BUTTON -->
-
-            <a
-                href="place-order.html"
-                class="buy-btn"
-            >
-                Buy Now
-            </a>
-
-        </div>
-
-    </div>
-
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <p>
-        © 2026 Madiha Digital Store. All Rights Reserved.
-    </p>
-
-</footer>
-
+    <script src="script.js"></script>
 
 </body>
 
-</html>
-```
-
-</body>
 </html>

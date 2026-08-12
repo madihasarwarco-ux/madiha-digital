@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -7,73 +6,138 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #000;
+    background: #080808;
     color: white;
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header {
-    background-color: #111;
-    padding: 20px;
+    background: #000;
     text-align: center;
-    border-bottom: 1px solid #ff1493;
+    padding: 25px 20px;
+    border-bottom: 2px solid #ff1493;
 }
 
+
+/* SMALL PROFILE PICTURE */
+
+.profile-pic {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px;
+    border: 2px solid #ff1493;
+}
+
+
 header h1 {
-    font-size: 32px;
-    margin-bottom: 8px;
     color: #ff1493;
+    font-size: 38px;
+    margin-bottom: 8px;
 }
 
 header p {
-    color: #ccc;
-    font-size: 15px;
-}
-
-
-/* HERO */
-
-.hero {
-    text-align: center;
-    padding: 45px 20px 25px;
-}
-
-.hero h2 {
-    font-size: 34px;
-    margin-bottom: 10px;
-    color: #ff1493;
-}
-
-.hero p {
-    color: #bbb;
+    color: white;
     font-size: 17px;
 }
 
 
-/* PRODUCT SECTION */
+/* =========================
+   LOGIN / SIGN UP BUTTONS
+========================= */
 
-.product-section {
+.account-buttons {
+    margin-top: 18px;
     display: flex;
     justify-content: center;
-    align-items: stretch;
-    gap: 25px;
-    padding: 30px 20px 60px;
-    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.account-btn {
+    display: inline-block;
+    padding: 9px 22px;
+    border: 1px solid #ff1493;
+    border-radius: 25px;
+    color: #ff1493;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.account-btn:hover {
+    background: #ff1493;
+    color: white;
+}
+
+.signup-btn {
+    background: #ff1493;
+    color: white;
+}
+
+.signup-btn:hover {
+    background: #000;
+    color: #ff1493;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align: center;
+    padding: 55px 20px;
+    background: linear-gradient(135deg, #000, #1a0010, #000);
+}
+
+.hero h2 {
+    color: #ff1493;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #ddd;
+    font-size: 18px;
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.product-section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
 }
 
 
 /* PRODUCT CARD */
 
 .product-card {
-    width: 380px;
-    background-color: #111;
+    background: #111;
     border: 1px solid #ff1493;
-    border-radius: 15px;
+    border-radius: 18px;
     overflow: hidden;
     text-align: center;
-    box-shadow: 0 5px 25px rgba(255, 20, 147, 0.20);
+    padding-bottom: 30px;
+    box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
 }
 
 
@@ -82,45 +146,41 @@ header p {
 .product-card img {
     width: 100%;
     height: 330px;
-    object-fit: cover;
+    object-fit: contain;
+    background: #000;
+    padding: 15px;
     display: block;
 }
 
 
-/* PRODUCT INFORMATION */
+/* PRODUCT INFO */
 
 .product-info {
-    padding: 25px;
+    padding: 25px 20px 0;
 }
 
 .product-info h3 {
+    color: #ff1493;
     font-size: 25px;
     margin-bottom: 12px;
-    color: #ff69b4;
 }
 
-
-/* DESCRIPTION */
-
 .description {
-    color: #bbb;
-    line-height: 1.6;
+    color: #ccc;
+    font-size: 15px;
     margin-bottom: 20px;
 }
 
 
 /* PRICE */
 
-.old-price {
-    color: #888;
-    text-decoration: line-through;
-    font-size: 18px;
-    margin-right: 10px;
+.price-box {
+    margin: 15px 0;
 }
 
 .new-price {
-    color: #ff1493;
-    font-size: 30px;
+    color: #ff4da6;
+    font-size: 28px;
     font-weight: bold;
 }
 
@@ -129,13 +189,12 @@ header p {
 
 .offer {
     display: inline-block;
-    margin-top: 12px;
-    padding: 7px 15px;
-    background-color: #ff1493;
-    color: white;
-    border-radius: 20px;
-    font-size: 14px;
+    background: #ff1493;
+    color: #000;
     font-weight: bold;
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin: 5px 0 20px;
 }
 
 
@@ -143,66 +202,375 @@ header p {
 
 .buy-btn {
     display: block;
-    margin-top: 25px;
-    padding: 14px;
-    background-color: #ff1493;
+    width: 80%;
+    margin: 10px auto 0;
+    padding: 13px 20px;
+    background: #ff1493;
     color: white;
     text-decoration: none;
-    border-radius: 8px;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
+    border-radius: 30px;
+    border: 2px solid #ff1493;
     transition: 0.3s;
 }
 
 .buy-btn:hover {
-    background-color: #ff69b4;
+    background: #000;
+    color: #ff1493;
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
-    background-color: #000;
+    background: #000;
     text-align: center;
-    padding: 20px;
-    color: #aaa;
+    padding: 25px 15px;
     border-top: 1px solid #ff1493;
 }
 
-
-/* MOBILE */
-
-@media (max-width: 850px) {
-
-    .product-section {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .product-card {
-        width: 380px;
-        max-width: 100%;
-    }
-
+footer p {
+    color: #aaa;
+    font-size: 14px;
 }
 
 
-@media (max-width: 500px) {
+/* =========================
+   WEBSITE CHAT BUTTON
+========================= */
+
+.chat-button {
+    position: fixed;
+    right: 25px;
+    bottom: 95px;
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    background: #ff1493;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+    z-index: 1000;
+}
+
+
+/* =========================
+   CHAT BOX
+========================= */
+
+.chat-box {
+    position: fixed;
+    right: 25px;
+    bottom: 165px;
+    width: 330px;
+    height: 430px;
+    background: #111;
+    border: 1px solid #ff1493;
+    border-radius: 18px;
+    box-shadow: 0 0 30px rgba(255, 20, 147, 0.35);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 999;
+}
+
+
+/* CHAT HEADER */
+
+.chat-header {
+    background: #ff1493;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+/* CHAT MESSAGES */
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #080808;
+}
+
+.message {
+    max-width: 85%;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.received {
+    background: #222;
+    color: white;
+}
+
+.sent {
+    background: #ff1493;
+    color: white;
+    margin-left: auto;
+}
+
+
+/* CHAT INPUT */
+
+.chat-input-area {
+    display: flex;
+    gap: 7px;
+    padding: 10px;
+    background: #111;
+    border-top: 1px solid #333;
+}
+
+.chat-input-area input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px;
+    background: #000;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 8px;
+    outline: none;
+}
+
+.chat-input-area input:focus {
+    border-color: #ff1493;
+}
+
+.chat-input-area button {
+    padding: 10px 13px;
+    background: #ff1493;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* =========================
+   WHATSAPP BUTTON
+========================= */
+
+.whatsapp-btn {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    min-width: 58px;
+    height: 58px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #25d366;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+    z-index: 999;
+}
+
+
+/* =========================
+   PLACE ORDER PAGE
+========================= */
+
+.order-section {
+    min-height: 70vh;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #000, #18000f, #000);
+}
+
+.order-card {
+    width: 100%;
+    max-width: 550px;
+    background: #111;
+    padding: 35px;
+    border: 1px solid #ff1493;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 20, 147, 0.25);
+}
+
+.order-card h2 {
+    text-align: center;
+    color: #ff1493;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.order-subtitle {
+    text-align: center;
+    color: #bbb;
+    margin-bottom: 25px;
+}
+
+
+/* FORM */
+
+.order-card label {
+    display: block;
+    color: #ff4da6;
+    font-weight: bold;
+    margin-top: 18px;
+    margin-bottom: 7px;
+}
+
+.order-card input,
+.order-card textarea,
+.order-card select {
+    width: 100%;
+    padding: 13px;
+    background: #000;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+.order-card input:focus,
+.order-card textarea:focus,
+.order-card select:focus {
+    border-color: #ff1493;
+}
+
+.order-card textarea {
+    resize: vertical;
+}
+
+
+/* TOTAL */
+
+.total-box {
+    margin-top: 25px;
+    padding: 18px;
+    background: #000;
+    border: 1px solid #ff1493;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.total-box strong {
+    color: #ff1493;
+    font-size: 24px;
+}
+
+
+/* ORDER BUTTON */
+
+.order-btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 15px;
+    border: 2px solid #ff1493;
+    border-radius: 30px;
+    background: #ff1493;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.order-btn:hover {
+    background: #000;
+    color: #ff1493;
+}
+
+
+/* BACK BUTTON */
+
+.back-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    padding: 12px;
+    border: 1px solid #ff1493;
+    border-radius: 30px;
+    color: #ff1493;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    background: #ff1493;
+    color: #000;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
 
     header h1 {
-        font-size: 26px;
+        font-size: 30px;
     }
 
     .hero h2 {
-        font-size: 27px;
+        font-size: 28px;
     }
 
-    .product-card {
-        width: 100%;
+    .product-section {
+        width: 92%;
+        grid-template-columns: 1fr;
     }
 
     .product-card img {
         height: 300px;
     }
 
+    .chat-box {
+        right: 15px;
+        bottom: 150px;
+        width: calc(100% - 30px);
+        max-width: 330px;
+    }
+
+    .chat-button {
+        right: 15px;
+    }
+
+    .whatsapp-btn {
+        right: 15px;
+    }
+
+    .order-section {
+        padding: 30px 15px;
+    }
+
+    .order-card {
+        padding: 25px 20px;
+    }
+
+    .account-buttons {
+        flex-wrap: wrap;
+    }
 }
