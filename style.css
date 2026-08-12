@@ -6,436 +6,451 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #080808;
-    color: white;
+    background: #000000;
+    color: #ffffff;
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header {
-    background: #000;
+    background: #000000;
+    color: #ffffff;
     text-align: center;
-    padding: 25px 20px;
-    border-bottom: 2px solid #ff1493;
+    padding: 25px 15px;
+    border-bottom: 2px solid #e91e63;
 }
-
-
-/* SMALL PROFILE PICTURE */
 
 .profile-pic {
-    width: 55px;
-    height: 55px;
+    width: 85px;
+    height: 85px;
     border-radius: 50%;
     object-fit: cover;
-    display: block;
-    margin: 0 auto 10px;
-    border: 2px solid #ff1493;
+    border: 3px solid #e91e63;
+    margin-bottom: 10px;
 }
 
-
 header h1 {
-    color: #ff1493;
-    font-size: 38px;
+    font-size: 32px;
     margin-bottom: 8px;
+    color: #ff69b4;
 }
 
 header p {
-    color: white;
-    font-size: 17px;
+    font-size: 16px;
+    color: #ffffff;
 }
 
 
-/* =========================
-   LOGIN / SIGN UP BUTTONS
-========================= */
-
-.account-buttons {
-    margin-top: 18px;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-}
-
-.account-btn {
-    display: inline-block;
-    padding: 9px 22px;
-    border: 1px solid #ff1493;
-    border-radius: 25px;
-    color: #ff1493;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.account-btn:hover {
-    background: #ff1493;
-    color: white;
-}
-
-.signup-btn {
-    background: #ff1493;
-    color: white;
-}
-
-.signup-btn:hover {
-    background: #000;
-    color: #ff1493;
-}
-
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
     text-align: center;
-    padding: 55px 20px;
-    background: linear-gradient(135deg, #000, #1a0010, #000);
+    padding: 40px 15px 30px;
+    background: #000000;
 }
 
 .hero h2 {
-    color: #ff1493;
-    font-size: 34px;
+    font-size: 30px;
+    color: #ff69b4;
     margin-bottom: 10px;
 }
 
 .hero p {
-    color: #ddd;
-    font-size: 18px;
+    color: #ffffff;
+    font-size: 17px;
 }
 
 
-/* =========================
-   PRODUCTS
-========================= */
+/* PRODUCTS */
 
 .product-section {
     width: 90%;
-    max-width: 1100px;
-    margin: 50px auto;
+    max-width: 1000px;
+    margin: 20px auto 50px;
+
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 35px;
+
+    gap: 30px;
 }
 
-
-/* PRODUCT CARD */
-
 .product-card {
-    background: #111;
-    border: 1px solid #ff1493;
+    background: #111111;
+    color: #ffffff;
+
+    border: 1px solid #333333;
     border-radius: 18px;
     overflow: hidden;
-    text-align: center;
-    padding-bottom: 30px;
-    box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
+
+    box-shadow: 0 5px 25px rgba(255, 20, 147, 0.25);
+
     transition: 0.3s;
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
+    transform: translateY(-5px);
+
+    border-color: #e91e63;
+
+    box-shadow: 0 8px 30px rgba(255, 20, 147, 0.45);
 }
 
-
-/* PRODUCT IMAGE */
-
-.product-card img {
+.product-card > img {
     width: 100%;
-    height: 330px;
+    height: 300px;
+
     object-fit: contain;
-    background: #000;
+
+    background: #111111;
+
     padding: 15px;
-    display: block;
 }
-
-
-/* PRODUCT INFO */
 
 .product-info {
-    padding: 25px 20px 0;
+    padding: 20px;
+    text-align: center;
 }
 
 .product-info h3 {
-    color: #ff1493;
-    font-size: 25px;
+    color: #ff69b4;
+
+    font-size: 21px;
+
     margin-bottom: 12px;
 }
 
 .description {
-    color: #ccc;
-    font-size: 15px;
-    margin-bottom: 20px;
+    color: #dddddd;
+
+    line-height: 1.5;
+
+    margin-bottom: 15px;
 }
 
-
-/* PRICE */
-
 .price-box {
-    margin: 15px 0;
+    margin-bottom: 8px;
 }
 
 .new-price {
-    color: #ff4da6;
-    font-size: 28px;
+    font-size: 24px;
+
     font-weight: bold;
+
+    color: #ff69b4;
 }
 
-
-/* OFFER */
-
 .offer {
-    display: inline-block;
-    background: #ff1493;
-    color: #000;
+    display: block;
+
+    color: #25d366;
+
     font-weight: bold;
-    padding: 6px 15px;
-    border-radius: 20px;
-    margin: 5px 0 20px;
+
+    margin-bottom: 18px;
 }
 
 
 /* BUY BUTTON */
 
 .buy-btn {
-    display: block;
-    width: 80%;
-    margin: 10px auto 0;
-    padding: 13px 20px;
-    background: #ff1493;
-    color: white;
+    display: inline-block;
+
+    background: #e91e63;
+
+    color: #ffffff;
+
     text-decoration: none;
-    font-size: 17px;
+
+    padding: 12px 28px;
+
+    border-radius: 25px;
+
     font-weight: bold;
-    border-radius: 30px;
-    border: 2px solid #ff1493;
+
     transition: 0.3s;
 }
 
 .buy-btn:hover {
-    background: #000;
-    color: #ff1493;
-    box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+    background: #ff1493;
+
+    transform: scale(1.05);
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
-    background: #000;
+    background: #000000;
+
+    color: #aaaaaa;
+
     text-align: center;
-    padding: 25px 15px;
-    border-top: 1px solid #ff1493;
+
+    padding: 20px 10px;
+
+    margin-top: 30px;
+
+    border-top: 1px solid #333333;
 }
 
-footer p {
-    color: #aaa;
-    font-size: 14px;
-}
 
-
-/* =========================
-   WEBSITE CHAT BUTTON
-========================= */
+/* CHAT BUTTON */
 
 .chat-button {
     position: fixed;
-    right: 25px;
-    bottom: 95px;
-    width: 58px;
-    height: 58px;
+
+    right: 20px;
+
+    bottom: 85px;
+
+    width: 55px;
+
+    height: 55px;
+
     border: none;
+
     border-radius: 50%;
-    background: #ff1493;
-    color: white;
-    font-size: 27px;
+
+    background: #e91e63;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
     cursor: pointer;
-    box-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+
     z-index: 1000;
 }
 
-
-/* =========================
-   CHAT BOX
-========================= */
-
-.chat-box {
-    position: fixed;
-    right: 25px;
-    bottom: 165px;
-    width: 330px;
-    height: 430px;
-    background: #111;
-    border: 1px solid #ff1493;
-    border-radius: 18px;
-    box-shadow: 0 0 30px rgba(255, 20, 147, 0.35);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 999;
+.chat-button:hover {
+    transform: scale(1.08);
 }
 
 
-/* CHAT HEADER */
+/* CHAT BOX */
+
+.chat-box {
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 150px;
+
+    width: 320px;
+
+    max-width: calc(100% - 40px);
+
+    background: #111111;
+
+    color: #ffffff;
+
+    border: 1px solid #333333;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 30px rgba(255, 20, 147, 0.35);
+
+    overflow: hidden;
+
+    display: none;
+
+    z-index: 999;
+}
 
 .chat-header {
-    background: #ff1493;
-    color: white;
+    background: #e91e63;
+
+    color: #ffffff;
+
     padding: 15px;
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 }
 
 .chat-header button {
-    background: transparent;
+    background: none;
+
     border: none;
-    color: white;
+
+    color: #ffffff;
+
     font-size: 25px;
+
     cursor: pointer;
 }
 
-
-/* CHAT MESSAGES */
-
 .chat-messages {
-    flex: 1;
+    height: 250px;
+
     padding: 15px;
+
     overflow-y: auto;
-    background: #080808;
+
+    background: #000000;
 }
 
 .message {
-    max-width: 85%;
-    padding: 10px 12px;
-    margin-bottom: 10px;
+    padding: 10px 13px;
+
     border-radius: 12px;
-    font-size: 14px;
+
+    margin-bottom: 10px;
+
+    max-width: 85%;
+
     line-height: 1.4;
 }
 
 .received {
-    background: #222;
-    color: white;
+    background: #222222;
+
+    color: #ffffff;
+
+    border: 1px solid #333333;
 }
 
 .sent {
-    background: #ff1493;
-    color: white;
+    background: #e91e63;
+
+    color: #ffffff;
+
     margin-left: auto;
 }
 
-
-/* CHAT INPUT */
-
 .chat-input-area {
     display: flex;
-    gap: 7px;
+
     padding: 10px;
-    background: #111;
-    border-top: 1px solid #333;
+
+    border-top: 1px solid #333333;
+
+    background: #111111;
 }
 
 .chat-input-area input {
     flex: 1;
-    min-width: 0;
+
     padding: 10px;
-    background: #000;
-    color: white;
-    border: 1px solid #555;
-    border-radius: 8px;
+
+    border: 1px solid #444444;
+
+    border-radius: 20px;
+
     outline: none;
+
+    background: #000000;
+
+    color: #ffffff;
 }
 
-.chat-input-area input:focus {
-    border-color: #ff1493;
+.chat-input-area input::placeholder {
+    color: #aaaaaa;
 }
 
 .chat-input-area button {
-    padding: 10px 13px;
-    background: #ff1493;
-    color: white;
+    margin-left: 8px;
+
+    padding: 10px 15px;
+
     border: none;
-    border-radius: 8px;
+
+    border-radius: 20px;
+
+    background: #e91e63;
+
+    color: #ffffff;
+
     cursor: pointer;
-    font-weight: bold;
 }
 
 
-/* =========================
-   WHATSAPP BUTTON
-========================= */
+/* WHATSAPP */
 
 .whatsapp-btn {
     position: fixed;
-    right: 25px;
-    bottom: 25px;
-    min-width: 58px;
-    height: 58px;
-    padding: 0 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    right: 20px;
+
+    bottom: 20px;
+
     background: #25d366;
-    color: white;
-    border-radius: 30px;
+
+    color: #ffffff;
+
     text-decoration: none;
-    font-size: 14px;
+
+    padding: 13px 20px;
+
+    border-radius: 25px;
+
     font-weight: bold;
-    box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
-    z-index: 999;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+    z-index: 1000;
+}
+
+.whatsapp-btn:hover {
+    background: #1ebe5d;
 }
 
 
-/* =========================
-   PLACE ORDER PAGE
-========================= */
+/* PLACE ORDER */
 
 .order-section {
-    min-height: 70vh;
-    padding: 50px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #000, #18000f, #000);
+    width: 90%;
+
+    max-width: 600px;
+
+    margin: 40px auto;
 }
 
 .order-card {
-    width: 100%;
-    max-width: 550px;
-    background: #111;
-    padding: 35px;
-    border: 1px solid #ff1493;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(255, 20, 147, 0.25);
+    background: #111111;
+
+    color: #ffffff;
+
+    padding: 30px;
+
+    border: 1px solid #333333;
+
+    border-radius: 18px;
+
+    box-shadow: 0 5px 25px rgba(255, 20, 147, 0.3);
 }
 
 .order-card h2 {
     text-align: center;
-    color: #ff1493;
-    font-size: 30px;
-    margin-bottom: 5px;
+
+    color: #ff69b4;
+
+    margin-bottom: 10px;
 }
 
 .order-subtitle {
     text-align: center;
-    color: #bbb;
+
+    color: #dddddd;
+
     margin-bottom: 25px;
 }
 
-
-/* FORM */
-
 .order-card label {
     display: block;
-    color: #ff4da6;
+
+    color: #ffffff;
+
     font-weight: bold;
-    margin-top: 18px;
+
+    margin-top: 15px;
+
     margin-bottom: 7px;
 }
 
@@ -443,115 +458,136 @@ footer p {
 .order-card textarea,
 .order-card select {
     width: 100%;
-    padding: 13px;
-    background: #000;
-    color: white;
-    border: 1px solid #555;
+
+    padding: 12px;
+
+    border: 1px solid #444444;
+
     border-radius: 10px;
+
     font-size: 15px;
+
     outline: none;
+
+    background: #000000;
+
+    color: #ffffff;
 }
 
-.order-card input:focus,
-.order-card textarea:focus,
-.order-card select:focus {
-    border-color: #ff1493;
+.order-card input::placeholder,
+.order-card textarea::placeholder {
+    color: #aaaaaa;
+}
+
+.order-card select option {
+    background: #111111;
+
+    color: #ffffff;
 }
 
 .order-card textarea {
     resize: vertical;
 }
 
-
-/* TOTAL */
-
 .total-box {
-    margin-top: 25px;
-    padding: 18px;
-    background: #000;
-    border: 1px solid #ff1493;
-    border-radius: 12px;
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
+    background: #000000;
+
+    border: 1px solid #333333;
+
+    color: #ffffff;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin-top: 20px;
+
     font-size: 18px;
 }
 
 .total-box strong {
-    color: #ff1493;
-    font-size: 24px;
+    color: #ff69b4;
+
+    font-size: 22px;
 }
-
-
-/* ORDER BUTTON */
 
 .order-btn {
     width: 100%;
-    margin-top: 22px;
-    padding: 15px;
-    border: 2px solid #ff1493;
-    border-radius: 30px;
-    background: #ff1493;
-    color: white;
+
+    border: none;
+
+    background: #e91e63;
+
+    color: #ffffff;
+
+    padding: 14px;
+
+    border-radius: 25px;
+
     font-size: 17px;
+
     font-weight: bold;
+
     cursor: pointer;
+
+    margin-top: 20px;
 }
 
 .order-btn:hover {
-    background: #000;
-    color: #ff1493;
+    background: #ff1493;
 }
 
+#orderMessage {
+    text-align: center;
 
-/* BACK BUTTON */
+    margin-top: 15px;
+
+    font-weight: bold;
+}
 
 .back-btn {
     display: block;
-    width: 100%;
+
     text-align: center;
-    margin-top: 15px;
-    padding: 12px;
-    border: 1px solid #ff1493;
-    border-radius: 30px;
-    color: #ff1493;
+
+    margin-top: 20px;
+
+    color: #ff69b4;
+
     text-decoration: none;
-}
 
-.back-btn:hover {
-    background: #ff1493;
-    color: #000;
+    font-weight: bold;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
 
     header h1 {
-        font-size: 30px;
-    }
-
-    .hero h2 {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .product-section {
-        width: 92%;
         grid-template-columns: 1fr;
+
+        width: 92%;
     }
 
-    .product-card img {
-        height: 300px;
+    .product-card > img {
+        height: 280px;
     }
 
     .chat-box {
-        right: 15px;
-        bottom: 150px;
-        width: calc(100% - 30px);
-        max-width: 330px;
+        right: 10px;
+
+        bottom: 145px;
     }
 
     .chat-button {
@@ -560,17 +596,11 @@ footer p {
 
     .whatsapp-btn {
         right: 15px;
-    }
 
-    .order-section {
-        padding: 30px 15px;
+        bottom: 15px;
     }
 
     .order-card {
-        padding: 25px 20px;
-    }
-
-    .account-buttons {
-        flex-wrap: wrap;
+        padding: 20px;
     }
 }
