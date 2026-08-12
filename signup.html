@@ -2,21 +2,16 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Sign Up - Madiha Digital Store</title>
 
     <link rel="icon" type="image/png" href="imge2.png.png">
-
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
-
 
 <header>
 
@@ -31,7 +26,6 @@
     <p>Create Your Account</p>
 
 </header>
-
 
 
 <section class="order-section">
@@ -100,10 +94,7 @@
 
         <p
             id="signupMessage"
-            style="
-                text-align: center;
-                margin-top: 15px;
-            "
+            style="text-align:center; margin-top:15px;"
         ></p>
 
 
@@ -127,7 +118,6 @@
 </section>
 
 
-
 <footer>
 
     <p>
@@ -138,20 +128,17 @@
 </footer>
 
 
-
 <script type="module">
 
     import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-
+        from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
     import {
         getAuth,
         createUserWithEmailAndPassword,
         updateProfile
     }
-    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
-
+        from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
     import {
         getFirestore,
@@ -159,13 +146,14 @@
         setDoc,
         serverTimestamp
     }
-    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+        from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
+
+    // CORRECT FIREBASE PROJECT
 
     const firebaseConfig = {
 
-        apiKey:
-            "AIzaSyC5bLBjzBe65W897lAyQ04HJy2P5T2pX0Y",
+        apiKey: "AIzaSyC5bLBjzBe65W897lAyQ04HJyP2Y5T2pX0Y",
 
         authDomain:
             "madiha-digital-store.firebaseapp.com",
@@ -184,227 +172,209 @@
 
         measurementId:
             "G-H7MDD1B8Q0"
-
     };
 
 
-    const app =
-        initializeApp(firebaseConfig);
+    // INITIALIZE FIREBASE
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+    const db = getFirestore(app);
 
 
-    const auth =
-        getAuth(app);
-
-
-    const db =
-        getFirestore(app);
-
+    // GET ELEMENTS
 
     const signupButton =
         document.getElementById("signupButton");
-
 
     const message =
         document.getElementById("signupMessage");
 
 
-    signupButton.addEventListener(
-        "click",
-        async function () {
+    // SIGN UP
+
+    signupButton.addEventListener("click", async function () {
+
+        const name =
+            document
+                .getElementById("signupName")
+                .value
+                .trim();
 
 
-            const name =
-                document
-                    .getElementById("signupName")
-                    .value
-                    .trim();
+        const email =
+            document
+                .getElementById("signupEmail")
+                .value
+                .trim();
 
 
-            const email =
-                document
-                    .getElementById("signupEmail")
-                    .value
-                    .trim();
+        const password =
+            document
+                .getElementById("signupPassword")
+                .value;
 
 
-            const password =
-                document
-                    .getElementById("signupPassword")
-                    .value;
+        const confirmPassword =
+            document
+                .getElementById("confirmPassword")
+                .value;
 
 
-            const confirmPassword =
-                document
-                    .getElementById("confirmPassword")
-                    .value;
+        message.textContent = "";
 
 
-            message.textContent = "";
+        // CHECK EMPTY FIELDS
+
+        if (!name || !email || !password || !confirmPassword) {
+
+            message.textContent =
+                "Please fill all fields.";
+
+            return;
+        }
 
 
-            if (
-                !name ||
-                !email ||
-                !password ||
-                !confirmPassword
-            ) {
+        // CHECK PASSWORD
 
-                message.textContent =
-                    "Please fill all fields.";
+        if (password !== confirmPassword) {
 
-                return;
+            message.textContent =
+                "Passwords do not match.";
 
-            }
+            return;
+        }
 
 
-            if (
-                password !== confirmPassword
-            ) {
+        // PASSWORD LENGTH
 
-                message.textContent =
-                    "Passwords do not match.";
+        if (password.length < 6) {
 
-                return;
+            message.textContent =
+                "Password must be at least 6 characters.";
 
-            }
-
-
-            if (
-                password.length < 6
-            ) {
-
-                message.textContent =
-                    "Password must be at least 6 characters.";
-
-                return;
-
-            }
+            return;
+        }
 
 
-            signupButton.disabled = true;
+        signupButton.disabled = true;
+
+        signupButton.textContent =
+            "Creating Account...";
+
+
+        try {
+
+            // CREATE FIREBASE ACCOUNT
+
+            const userCredential =
+                await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+            const user =
+                userCredential.user;
+
+
+            // SAVE USER NAME
+
+            await updateProfile(
+                user,
+                {
+                    displayName: name
+                }
+            );
+
+
+            // SAVE USER DATA IN FIRESTORE
+
+            await setDoc(
+                doc(db, "users", user.uid),
+                {
+                    name: name,
+                    email: email,
+                    createdAt: serverTimestamp()
+                }
+            );
+
+
+            // SUCCESS MESSAGE
+
+            message.textContent =
+                "Account created successfully! ❤️";
+
 
             signupButton.textContent =
-                "Creating Account...";
+                "Account Created";
 
 
-            try {
+            // GO TO HOME PAGE
+
+            setTimeout(function () {
+
+                window.location.href =
+                    "index.html";
+
+            }, 1500);
 
 
-                const userCredential =
-                    await createUserWithEmailAndPassword(
-                        auth,
-                        email,
-                        password
-                    );
+        } catch (error) {
 
+            console.error(error);
 
-                const user =
-                    userCredential.user;
-
-
-                await updateProfile(
-                    user,
-                    {
-                        displayName: name
-                    }
-                );
-
-
-                await setDoc(
-                    doc(
-                        db,
-                        "users",
-                        user.uid
-                    ),
-                    {
-
-                        name: name,
-
-                        email: email,
-
-                        createdAt:
-                            serverTimestamp()
-
-                    }
-                );
-
+            if (
+                error.code ===
+                "auth/email-already-in-use"
+            ) {
 
                 message.textContent =
-                    "Account created successfully! ❤️";
-
-
-                setTimeout(
-                    function () {
-
-                        window.location.href =
-                            "index.html";
-
-                    },
-                    1500
-                );
-
+                    "This email is already registered. Please Login.";
 
             }
 
-            catch (error) {
+            else if (
+                error.code ===
+                "auth/invalid-email"
+            ) {
 
-
-                console.error(error);
-
-
-                if (
-                    error.code ===
-                    "auth/email-already-in-use"
-                ) {
-
-                    message.textContent =
-                        "This email is already registered. Please Login.";
-
-                }
-
-                else if (
-                    error.code ===
-                    "auth/invalid-email"
-                ) {
-
-                    message.textContent =
-                        "Please enter a valid email.";
-
-                }
-
-                else if (
-                    error.code ===
-                    "auth/weak-password"
-                ) {
-
-                    message.textContent =
-                        "Password must be at least 6 characters.";
-
-                }
-
-                else {
-
-                    message.textContent =
-                        "Error: " +
-                        error.message;
-
-                }
-
-
-                signupButton.disabled =
-                    false;
-
-
-                signupButton.textContent =
-                    "Create Account";
+                message.textContent =
+                    "Please enter a valid email.";
 
             }
+
+            else if (
+                error.code ===
+                "auth/weak-password"
+            ) {
+
+                message.textContent =
+                    "Password is too weak. Use at least 6 characters.";
+
+            }
+
+            else {
+
+                message.textContent =
+                    "Error: " + error.message;
+
+            }
+
+
+            signupButton.disabled = false;
+
+            signupButton.textContent =
+                "Create Account";
 
         }
-    );
+
+    });
 
 </script>
-
 
 </body>
 

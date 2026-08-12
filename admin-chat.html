@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Chat - Madiha Digital Store</title>
+
+    <link rel="icon"
+          type="image/png"
+          href="imge2.png.png">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <img
+            src="imge2.png.png.png"
+            alt="Madiha"
+            class="profile-pic"
+        >
+
+        <h1>Madiha Digital Store</h1>
+
+        <p>Customer Messages</p>
+
+    </header>
+
+
+    <section class="order-section">
+
+        <div class="order-card">
+
+            <h2>💬 Customer Chat</h2>
+
+            <p id="adminStatus">
+                Checking admin access...
+            </p>
+
+            <div
+                id="messages"
+                style="
+                    max-height:400px;
+                    overflow-y:auto;
+                    margin:20px 0;
+                "
+            ></div>
+
+            <input
+                type="email"
+                id="customerEmail"
+                placeholder="Customer email"
+            >
+
+            <input
+                type="text"
+                id="replyInput"
+                placeholder="Write your reply..."
+            >
+
+            <button
+                type="button"
+                class="order-btn"
+                id="replyButton"
+            >
+                Send Reply
+            </button>
+
+            <button
+                type="button"
+                class="back-btn"
+                id="logoutButton"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            © 2026 Madiha Digital Store.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+        import {
+            getAuth,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+        import {
+            getFirestore,
+            collection,
+            addDoc,
+            query,
+            orderBy,
+            onSnapshot,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyC5bLBjzBe65W897lAyQ04HJy2P5T2pX0Y",
+
+            authDomain:
+                "madiha-digital-store.firebaseapp.com",
+
+            projectId:
+                "madiha-digital-store",
+
+            storageBucket:
+                "madiha-digital-store.firebasestorage.app",
+
+            messagingSenderId:
+                "450607238935",
+
+            appId:
+                "1:450607238935:web:eb9a366df863f6bcad3152",
+
+            measurementId:
+                "G-H7MDD1B8Q0"
+
+        };
+
+
+        const app =
+            initializeApp(firebaseConfig);
+
+        const auth =
+            getAuth(app);
+
+        const db =
+            getFirestore(app);
+
+
+        const adminStatus =
+            document.getElementById(
+                "adminStatus"
+            );
+
+
+        const messagesBox =
+            document.getElementById(
+                "messages"
+            );
+
+
+        /*
+         * IMPORTANT:
+         * Yahan baad mein tumhara
+         * Firebase admin UID add karenge.
+         */
+
+
+        onAuthStateChanged(
+            auth,
+            function(user) {
+
+                if (!user) {
+
+                    adminStatus.textContent =
+                        "Please login first.";
+
+                    setTimeout(
+                        function() {
+
+                            window.location.href =
+                                "login.html";
+
+                        },
+                        1000
+                    );
+
+                    return;
+
+                }
+
+
+                adminStatus.textContent =
+                    "Logged in as: " +
+                    user.email;
+
+                loadMessages();
+
+            }
+        );
+
+
+        function loadMessages() {
+
+            const messagesQuery =
+                query(
+                    collection(db, "messages"),
+                    orderBy(
+                        "createdAt",
+                        "asc"
+                    )
+                );
+
+
+            onSnapshot(
+                messagesQuery,
+                function(snapshot) {
+
+                    messagesBox.innerHTML = "";
+
+
+                    snapshot.forEach(
+                        function(doc) {
+
+                            const data =
+                                doc.data();
+
+
+                            const div =
+                                document.createElement(
+                                    "div"
+                                );
+
+
+                            div.style.padding =
+                                "10px";
+
+                            div.style.marginBottom =
+                                "8px";
+
+                            div.style.borderRadius =
+                                "8px";
+
+                            div.style.background =
+                                "#f1f1f1";
+
+
+                            div.innerHTML =
+                                "<strong>" +
+                                (data.sender ||
+                                "Customer") +
+                                "</strong><br>" +
+
+                                "Email: " +
+                                (data.email ||
+                                "") +
+                                "<br>" +
+
+                                (data.message ||
+                                "");
+
+
+                            messagesBox.appendChild(
+                                div
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+
+
+        document
+            .getElementById(
+                "replyButton"
+            )
+            .addEventListener(
+                "click",
+                async function() {
+
+                    const email =
+                        document
+                            .getElementById(
+                                "customerEmail"
+                            )
+                            .value
+                            .trim();
+
+
+                    const reply =
+                        document
+                            .getElementById(
+                                "replyInput"
+                            )
+                            .value
+                            .trim();
+
+
+                    if (!email || !reply) {
+
+                        alert(
+                            "Customer email aur reply dono likho."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const user =
+                        auth.currentUser;
+
+
+                    if (!user) {
+
+                        alert(
+                            "Please login first."
+                        );
+
+                        return;
+
+                    }
+
+
+                    await addDoc(
+                        collection(
+                            db,
+                            "messages"
+                        ),
+                        {
+
+                            email:
+                                email,
+
+                            message:
+                                reply,
+
+                            sender:
+                                "admin",
+
+                            adminId:
+                                user.uid,
+
+                            seen:
+                                false,
+
+                            createdAt:
+                                serverTimestamp()
+
+                        }
+                    );
+
+
+                    document
+                        .getElementById(
+                            "replyInput"
+                        )
+                        .value = "";
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "logoutButton"
+            )
+            .addEventListener(
+                "click",
+                async function() {
+
+                    await signOut(auth);
+
+                    window.location.href =
+                        "login.html";
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>

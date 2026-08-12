@@ -4,30 +4,22 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Place Order - Madiha Digital Store</title>
 
-    <!-- Browser Tab Image -->
     <link rel="icon" type="image/png" href="imge2.png.png">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-
-    <!-- HEADER -->
-
     <header>
 
-        <!-- Small Profile Picture -->
-
         <img
-            src="imge2.png.png"
+            src="imge2.png.png.png"
             alt="Madiha"
             class="profile-pic"
         >
@@ -36,47 +28,19 @@
 
         <p>Place Your Order</p>
 
-
-        <!-- LOGIN / SIGN UP -->
-
-        <div class="account-buttons">
-
-            <a
-                href="login.html"
-                class="account-btn"
-            >
-                Login
-            </a>
-
-            <a
-                href="signup.html"
-                class="account-btn signup-btn"
-            >
-                Sign Up
-            </a>
-
-        </div>
-
     </header>
 
 
-    <!-- ORDER SECTION -->
-
     <section class="order-section">
-
 
         <div class="order-card">
 
-
             <h2>Place Your Order</h2>
-
 
             <p class="order-subtitle">
                 Please enter your details below
             </p>
 
-
-            <!-- NAME -->
 
             <label for="name">
                 Your Name
@@ -89,8 +53,6 @@
             >
 
 
-            <!-- PHONE -->
-
             <label for="phone">
                 Phone Number
             </label>
@@ -101,8 +63,6 @@
                 placeholder="03XXXXXXXXX"
             >
 
-
-            <!-- ADDRESS -->
 
             <label for="address">
                 Delivery Address
@@ -115,26 +75,22 @@
             ></textarea>
 
 
-            <!-- PRODUCT -->
-
             <label for="product">
                 Select Product
             </label>
 
             <select id="product">
 
-                <option value="600">
+                <option value="Face Cream" data-price="600">
                     Natural Radiance Face Cream - Rs. 600
                 </option>
 
-                <option value="700">
+                <option value="Hathon Pao Ki Cream" data-price="700">
                     Hathon Pao Ki Cream - Rs. 700
                 </option>
 
             </select>
 
-
-            <!-- QUANTITY -->
 
             <label for="quantity">
                 Quantity
@@ -147,8 +103,6 @@
                 min="1"
             >
 
-
-            <!-- TOTAL -->
 
             <div class="total-box">
 
@@ -163,18 +117,20 @@
             </div>
 
 
-            <!-- WHATSAPP ORDER -->
-
             <button
                 type="button"
                 class="order-btn"
                 id="orderButton"
             >
-                💬 Order on WhatsApp
+                Place Order
             </button>
 
 
-            <!-- BACK TO STORE -->
+            <p
+                id="orderMessage"
+                style="text-align:center; margin-top:15px;"
+            ></p>
+
 
             <a
                 href="index.html"
@@ -183,13 +139,10 @@
                 ← Back to Store
             </a>
 
-
         </div>
 
     </section>
 
-
-    <!-- FOOTER -->
 
     <footer>
 
@@ -201,9 +154,254 @@
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+    <script type="module">
 
-    <script src="place-order.js"></script>
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+        import {
+            getAuth,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+        import {
+            getFirestore,
+            collection,
+            addDoc,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyC5bLBjzBe65W897lAyQ04HJyP2T5pX0Y",
+
+            authDomain: "madiha-digital-store.firebaseapp.com",
+
+            projectId: "madiha-digital-store",
+
+            storageBucket: "madiha-digital-store.firebasestorage.app",
+
+            messagingSenderId: "450607238935",
+
+            appId: "1:450607238935:web:eb9a366df863f6bcad3152",
+
+            measurementId: "G-H7MDD1B8Q0"
+
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth(app);
+
+        const db = getFirestore(app);
+
+
+        let currentUser = null;
+
+
+        onAuthStateChanged(auth, function(user) {
+
+            currentUser = user;
+
+        });
+
+
+        const product =
+            document.getElementById("product");
+
+        const quantity =
+            document.getElementById("quantity");
+
+        const totalPrice =
+            document.getElementById("totalPrice");
+
+
+        function calculateTotal() {
+
+            const price =
+                Number(
+                    product.options[
+                        product.selectedIndex
+                    ].dataset.price
+                );
+
+            const qty =
+                Number(quantity.value);
+
+            totalPrice.textContent =
+                "Rs. " + (price * qty);
+
+        }
+
+
+        product.addEventListener(
+            "change",
+            calculateTotal
+        );
+
+
+        quantity.addEventListener(
+            "input",
+            calculateTotal
+        );
+
+
+        document
+            .getElementById("orderButton")
+            .addEventListener(
+                "click",
+                async function() {
+
+                    const message =
+                        document.getElementById(
+                            "orderMessage"
+                        );
+
+
+                    if (!currentUser) {
+
+                        alert(
+                            "Please Login or Sign Up first."
+                        );
+
+                        window.location.href =
+                            "login.html";
+
+                        return;
+
+                    }
+
+
+                    const name =
+                        document.getElementById(
+                            "name"
+                        ).value.trim();
+
+
+                    const phone =
+                        document.getElementById(
+                            "phone"
+                        ).value.trim();
+
+
+                    const address =
+                        document.getElementById(
+                            "address"
+                        ).value.trim();
+
+
+                    const selectedProduct =
+                        product.value;
+
+
+                    const qty =
+                        Number(quantity.value);
+
+
+                    const price =
+                        Number(
+                            product.options[
+                                product.selectedIndex
+                            ].dataset.price
+                        );
+
+
+                    const total =
+                        price * qty;
+
+
+                    if (
+                        !name ||
+                        !phone ||
+                        !address ||
+                        qty < 1
+                    ) {
+
+                        message.textContent =
+                            "Please fill all details.";
+
+                        return;
+
+                    }
+
+
+                    try {
+
+                        await addDoc(
+                            collection(db, "orders"),
+                            {
+
+                                userId:
+                                    currentUser.uid,
+
+                                email:
+                                    currentUser.email,
+
+                                name:
+                                    name,
+
+                                phone:
+                                    phone,
+
+                                address:
+                                    address,
+
+                                product:
+                                    selectedProduct,
+
+                                quantity:
+                                    qty,
+
+                                total:
+                                    total,
+
+                                status:
+                                    "new",
+
+                                createdAt:
+                                    serverTimestamp()
+
+                            }
+                        );
+
+
+                        message.textContent =
+                            "Order placed successfully! ❤️";
+
+
+                        document
+                            .getElementById("name")
+                            .value = "";
+
+                        document
+                            .getElementById("phone")
+                            .value = "";
+
+                        document
+                            .getElementById("address")
+                            .value = "";
+
+
+                    }
+
+                    catch(error) {
+
+                        console.error(error);
+
+                        message.textContent =
+                            "Order could not be placed. Please try again.";
+
+                    }
+
+                }
+            );
+
+    </script>
 
 </body>
 

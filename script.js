@@ -1,158 +1,191 @@
-document.addEventListener("DOMContentLoaded", function () {
+// Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
-    console.log("Madiha Digital Store is working!");
+import {
+    getAuth,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
-    /* =========================
-       BUY NOW BUTTONS
-    ========================= */
+// Firebase Configuration
 
-    const buyButtons = document.querySelectorAll(".buy-btn");
+const firebaseConfig = {
+    apiKey: "AIzaSyC5bLBjzBe65W897lAyQ04HJyP2T5pX0Y",
+    authDomain: "madiha-digital-store.firebaseapp.com",
+    projectId: "madiha-digital-store",
+    storageBucket: "madiha-digital-store.firebasestorage.app",
+    messagingSenderId: "450607238935",
+    appId: "1:450607238935:web:eb9a366df863f6bcad3152",
+    measurementId: "G-H7MDD1B8Q0"
+};
 
-    buyButtons.forEach(function (button) {
 
-        button.addEventListener("click", function () {
+// Initialize Firebase
 
-            console.log("Opening Place Order page...");
+const app = initializeApp(firebaseConfig);
 
-        });
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+// Chat Elements
+
+const chatButton = document.getElementById("chatButton");
+const chatBox = document.getElementById("chatBox");
+const closeChat = document.getElementById("closeChat");
+
+const chatInput = document.getElementById("chatInput");
+const sendMessage = document.getElementById("sendMessage");
+
+const chatMessages = document.getElementById("chatMessages");
+
+
+// Current User
+
+let currentUser = null;
+
+
+// Check Login
+
+onAuthStateChanged(auth, function (user) {
+
+    currentUser = user;
+
+});
+
+
+// Open Chat
+
+if (chatButton) {
+
+    chatButton.addEventListener("click", function () {
+
+        chatBox.classList.add("active");
 
     });
 
-
-    /* =========================
-       WEBSITE CHAT
-    ========================= */
-
-    const chatButton = document.getElementById("chatButton");
-    const chatBox = document.getElementById("chatBox");
-    const closeChat = document.getElementById("closeChat");
-
-    const chatInput = document.getElementById("chatInput");
-    const sendMessage = document.getElementById("sendMessage");
-    const chatMessages = document.getElementById("chatMessages");
+}
 
 
-    /* OPEN CHAT */
+// Close Chat
 
-    if (chatButton && chatBox) {
+if (closeChat) {
 
-        chatButton.addEventListener("click", function () {
+    closeChat.addEventListener("click", function () {
 
-            chatBox.style.display = "flex";
+        chatBox.classList.remove("active");
 
-            if (chatInput) {
-                chatInput.focus();
-            }
+    });
 
-        });
-
-    }
+}
 
 
-    /* CLOSE CHAT */
+// Send Message
 
-    if (closeChat && chatBox) {
+if (sendMessage) {
 
-        closeChat.addEventListener("click", function () {
-
-            chatBox.style.display = "none";
-
-        });
-
-    }
-
-
-    /* SEND MESSAGE */
-
-    function sendChatMessage() {
-
-        if (!chatInput || !chatMessages) {
-            return;
-        }
+    sendMessage.addEventListener("click", async function () {
 
         const message = chatInput.value.trim();
 
+
         if (message === "") {
+
             return;
+
         }
 
 
-        /* USER MESSAGE */
+        if (!currentUser) {
 
-        const userMessage = document.createElement("div");
+            alert("Please Login or Sign Up first.");
 
-        userMessage.className = "message sent";
+            window.location.href = "login.html";
 
-        userMessage.textContent = message;
+            return;
 
-        chatMessages.appendChild(userMessage);
-
-
-        /* CLEAR INPUT */
-
-        chatInput.value = "";
+        }
 
 
-        /* SCROLL TO BOTTOM */
+        try {
 
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+            await addDoc(
+                collection(db, "messages"),
+                {
 
+                    userId: currentUser.uid,
 
-        /*
-            Temporary automatic reply.
+                    email: currentUser.email,
 
-            Real-time chat with Madiha will need
-            a backend/database connection.
-        */
+                    message: message,
 
-        setTimeout(function () {
+                    sender: "customer",
 
-            const reply = document.createElement("div");
+                    seen: false,
 
-            reply.className = "message received";
+                    createdAt: serverTimestamp()
 
-            reply.textContent =
-                "Thank you for your message! ❤️ Madiha will reply soon.";
-
-            chatMessages.appendChild(reply);
-
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        }, 700);
-
-    }
+                }
+            );
 
 
-    /* SEND BUTTON */
+            // Show message on screen
 
-    if (sendMessage) {
+            const messageDiv = document.createElement("div");
 
-        sendMessage.addEventListener("click", function () {
+            messageDiv.className = "message sent";
 
-            sendChatMessage();
+            messageDiv.textContent = message;
 
-        });
-
-    }
+            chatMessages.appendChild(messageDiv);
 
 
-    /* ENTER KEY */
+            chatInput.value = "";
 
-    if (chatInput) {
 
-        chatInput.addEventListener("keydown", function (event) {
+            chatMessages.scrollTop =
+                chatMessages.scrollHeight;
 
-            if (event.key === "Enter") {
 
-                event.preventDefault();
+        }
 
-                sendChatMessage();
+        catch (error) {
 
-            }
+            console.error(error);
 
-        });
+            alert(
+                "Message send nahi ho saka. Please try again."
+            );
 
-    }
+        }
 
-});
+    });
+
+}
+
+
+// Send message with Enter key
+
+if (chatInput) {
+
+    chatInput.addEventListener("keydown", function (event) {
+
+        if (event.key === "Enter") {
+
+            event.preventDefault();
+
+            sendMessage.click();
+
+        }
+
+    });
+
+}

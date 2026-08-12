@@ -4,27 +4,21 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login - Madiha Digital Store</title>
 
-    <!-- Browser Tab Image -->
-    <link rel="icon" type="image/png" href="imge3.png.png">
+    <link rel="icon" type="image/png" href="imge2.png.png">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-
     <!-- HEADER -->
 
     <header>
-
-        <!-- Madiha DP -->
 
         <img
             src="imge2.png.png.png"
@@ -39,7 +33,7 @@
     </header>
 
 
-    <!-- LOGIN SECTION -->
+    <!-- LOGIN -->
 
     <section class="order-section">
 
@@ -48,11 +42,9 @@
             <h2>Login</h2>
 
             <p class="order-subtitle">
-                Login to your account
+                Login to chat with us and place your order
             </p>
 
-
-            <!-- EMAIL -->
 
             <label for="loginEmail">
                 Email Address
@@ -65,8 +57,6 @@
             >
 
 
-            <!-- PASSWORD -->
-
             <label for="loginPassword">
                 Password
             </label>
@@ -78,8 +68,6 @@
             >
 
 
-            <!-- LOGIN BUTTON -->
-
             <button
                 type="button"
                 class="order-btn"
@@ -89,7 +77,11 @@
             </button>
 
 
-            <!-- SIGN UP -->
+            <p
+                id="loginMessage"
+                style="text-align:center; margin-top:15px;"
+            ></p>
+
 
             <a
                 href="signup.html"
@@ -98,8 +90,6 @@
                 Don't have an account? Sign Up
             </a>
 
-
-            <!-- BACK TO STORE -->
 
             <a
                 href="index.html"
@@ -125,9 +115,111 @@
     </footer>
 
 
-    <!-- LOGIN JAVASCRIPT -->
+    <!-- FIREBASE LOGIN -->
 
-    <script src="login.js"></script>
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+        import {
+            getAuth,
+            signInWithEmailAndPassword
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyC5bLBjzBe65W897lAyQ04HJy2P5T2pX0Y",
+
+            authDomain: "madiha-digital-store.firebaseapp.com",
+
+            projectId: "madiha-digital-store",
+
+            storageBucket: "madiha-digital-store.firebasestorage.app",
+
+            messagingSenderId: "450607238935",
+
+            appId: "1:450607238935:web:eb9a366df863f6bcad3152",
+
+            measurementId: "G-H7MDD1B8Q0"
+
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth(app);
+
+
+        const loginButton =
+            document.getElementById("loginButton");
+
+        const message =
+            document.getElementById("loginMessage");
+
+
+        loginButton.addEventListener(
+            "click",
+            async function () {
+
+                const email =
+                    document.getElementById("loginEmail").value.trim();
+
+                const password =
+                    document.getElementById("loginPassword").value;
+
+
+                if (!email || !password) {
+
+                    message.textContent =
+                        "Please enter email and password.";
+
+                    return;
+
+                }
+
+
+                try {
+
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                    message.textContent =
+                        "Login successful!";
+
+
+                    setTimeout(
+                        function () {
+
+                            window.location.href =
+                                "index.html";
+
+                        },
+                        1000
+                    );
+
+                }
+
+                catch (error) {
+
+                    console.error(error);
+
+                    message.textContent =
+                        "Login failed. Please check your email and password.";
+
+                }
+
+            }
+        );
+
+    </script>
 
 </body>
 
