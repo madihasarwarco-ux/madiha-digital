@@ -7,7 +7,9 @@ const sendMessage = document.getElementById("sendMessage");
 const chatMessages = document.getElementById("chatMessages");
 
 
+// =========================
 // OPEN CHAT
+// =========================
 
 if (chatButton) {
 
@@ -22,7 +24,9 @@ if (chatButton) {
 }
 
 
+// =========================
 // CLOSE CHAT
+// =========================
 
 if (closeChat) {
 
@@ -35,18 +39,39 @@ if (closeChat) {
 }
 
 
+// =========================
 // SEND MESSAGE
+// =========================
 
 if (sendMessage) {
 
     sendMessage.addEventListener("click", function () {
 
-        const message = chatInput.value.trim();
+        const message =
+            chatInput.value.trim();
+
 
         if (message === "") {
+
             return;
+
         }
 
+
+        // =========================
+        // MESSAGE ROW
+        // =========================
+
+        const messageRow =
+            document.createElement("div");
+
+        messageRow.className =
+            "message-row sent-row";
+
+
+        // =========================
+        // MESSAGE
+        // =========================
 
         const messageDiv =
             document.createElement("div");
@@ -57,32 +82,106 @@ if (sendMessage) {
         messageDiv.textContent =
             message;
 
-        chatMessages.appendChild(messageDiv);
+
+        // =========================
+        // PROFILE DP
+        // =========================
+
+        const dp =
+            document.createElement("img");
+
+        dp.src =
+            "imge2.png.png.png";
+
+        dp.alt =
+            "Madiha";
+
+        dp.className =
+            "chat-dp";
+
+
+        // =========================
+        // ADD MESSAGE + DP
+        // =========================
+
+        messageRow.appendChild(
+            messageDiv
+        );
+
+        messageRow.appendChild(
+            dp
+        );
+
+        chatMessages.appendChild(
+            messageRow
+        );
+
+
+        // =========================
+        // WHATSAPP
+        // =========================
+
+        const whatsappNumber =
+            "923467640372";
+
+
+        const whatsappMessage =
+            "Assalam-o-Alaikum Madiha! 👋\n\n" +
+            "My message:\n" +
+            message;
+
+
+        const whatsappURL =
+            "https://wa.me/" +
+            whatsappNumber +
+            "?text=" +
+            encodeURIComponent(
+                whatsappMessage
+            );
+
+
+        // Clear input
 
         chatInput.value = "";
 
+
+        // Scroll chat
+
         chatMessages.scrollTop =
             chatMessages.scrollHeight;
+
+
+        // Open WhatsApp
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
 
     });
 
 }
 
 
+// =========================
 // ENTER KEY
+// =========================
 
 if (chatInput) {
 
-    chatInput.addEventListener("keydown", function (event) {
+    chatInput.addEventListener(
+        "keydown",
+        function (event) {
 
-        if (event.key === "Enter") {
+            if (event.key === "Enter") {
 
-            event.preventDefault();
+                event.preventDefault();
 
-            sendMessage.click();
+                sendMessage.click();
+
+            }
 
         }
-
-    });
+    );
 
 }

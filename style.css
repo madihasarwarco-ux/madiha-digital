@@ -11,7 +11,9 @@ body {
 }
 
 
-/* HEADER */
+/* =========================
+HEADER
+========================= */
 
 header {
     background: #000000;
@@ -42,7 +44,9 @@ header p {
 }
 
 
-/* HERO */
+/* =========================
+HERO
+========================= */
 
 .hero {
     text-align: center;
@@ -62,7 +66,9 @@ header p {
 }
 
 
-/* PRODUCTS */
+/* =========================
+PRODUCTS
+========================= */
 
 .product-section {
     width: 90%;
@@ -151,7 +157,9 @@ header p {
 }
 
 
-/* BUY BUTTON */
+/* =========================
+BUY BUTTON
+========================= */
 
 .buy-btn {
     display: inline-block;
@@ -178,7 +186,9 @@ header p {
 }
 
 
-/* FOOTER */
+/* =========================
+FOOTER
+========================= */
 
 footer {
     background: #000000;
@@ -195,7 +205,9 @@ footer {
 }
 
 
-/* CHAT BUTTON */
+/* =========================
+CHAT BUTTON
+========================= */
 
 .chat-button {
     position: fixed;
@@ -230,7 +242,9 @@ footer {
 }
 
 
-/* CHAT BOX */
+/* =========================
+CHAT BOX
+========================= */
 
 .chat-box {
     position: fixed;
@@ -260,6 +274,9 @@ footer {
     z-index: 999;
 }
 
+
+/* CHAT HEADER */
+
 .chat-header {
     background: #e91e63;
 
@@ -285,6 +302,9 @@ footer {
 
     cursor: pointer;
 }
+
+
+/* CHAT MESSAGES */
 
 .chat-messages {
     height: 250px;
@@ -323,6 +343,46 @@ footer {
 
     margin-left: auto;
 }
+
+
+/* =========================
+CHAT MESSAGE DP
+========================= */
+
+.message-row {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+.message-row.sent-row {
+    justify-content: flex-end;
+}
+
+.chat-dp {
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 2px solid #e91e63;
+
+    flex-shrink: 0;
+}
+
+.message-row .message {
+    margin-bottom: 0;
+}
+
+
+/* CHAT INPUT */
 
 .chat-input-area {
     display: flex;
@@ -371,7 +431,9 @@ footer {
 }
 
 
-/* WHATSAPP */
+/* =========================
+WHATSAPP BUTTON
+========================= */
 
 .whatsapp-btn {
     position: fixed;
@@ -402,7 +464,9 @@ footer {
 }
 
 
-/* PLACE ORDER */
+/* =========================
+PLACE ORDER PAGE
+========================= */
 
 .order-section {
     width: 90%;
@@ -566,7 +630,9 @@ footer {
 }
 
 
-/* MOBILE */
+/* =========================
+MOBILE
+========================= */
 
 @media (max-width: 700px) {
 
@@ -603,4 +669,5 @@ footer {
     .order-card {
         padding: 20px;
     }
+
 }
