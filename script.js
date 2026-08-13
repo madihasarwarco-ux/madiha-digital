@@ -17,7 +17,9 @@ if (chatButton) {
 
         chatBox.style.display = "block";
 
-        chatInput.focus();
+        if (chatInput) {
+            chatInput.focus();
+        }
 
     });
 
@@ -47,8 +49,7 @@ if (sendMessage) {
 
     sendMessage.addEventListener("click", function () {
 
-        const message =
-            chatInput.value.trim();
+        const message = chatInput.value.trim();
 
 
         if (message === "") {
@@ -118,12 +119,16 @@ if (sendMessage) {
 
 
         // =========================
-        // WHATSAPP
+        // WHATSAPP NUMBER
         // =========================
 
         const whatsappNumber =
             "923208046712";
 
+
+        // =========================
+        // WHATSAPP MESSAGE
+        // =========================
 
         const whatsappMessage =
             "Assalam-o-Alaikum Madiha! 👋\n\n" +
