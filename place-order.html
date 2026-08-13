@@ -60,7 +60,7 @@
             <input
                 type="tel"
                 id="phone"
-                placeholder="03XXXXXXXXX"
+                placeholder="03208046712"
             >
 
 
@@ -81,11 +81,17 @@
 
             <select id="product">
 
-                <option value="Natural Radiance Face Cream" data-price="600">
+                <option
+                    value="Natural Radiance Face Cream"
+                    data-price="600"
+                >
                     Natural Radiance Face Cream - Rs. 600
                 </option>
 
-                <option value="Hathon Pao Ki Cream" data-price="700">
+                <option
+                    value="Hathon Pao Ki Cream"
+                    data-price="700"
+                >
                     Hathon Pao Ki Cream - Rs. 700
                 </option>
 
@@ -195,108 +201,117 @@
 
         document
             .getElementById("orderButton")
-            .addEventListener("click", function () {
+            .addEventListener(
+                "click",
+                function () {
 
-                const message =
-                    document.getElementById(
-                        "orderMessage"
-                    );
-
-
-                const name =
-                    document.getElementById(
-                        "name"
-                    ).value.trim();
+                    const message =
+                        document.getElementById(
+                            "orderMessage"
+                        );
 
 
-                const phone =
-                    document.getElementById(
-                        "phone"
-                    ).value.trim();
+                    const name =
+                        document.getElementById(
+                            "name"
+                        ).value.trim();
 
 
-                const address =
-                    document.getElementById(
-                        "address"
-                    ).value.trim();
+                    const phone =
+                        document.getElementById(
+                            "phone"
+                        ).value.trim();
 
 
-                const selectedProduct =
-                    product.value;
+                    const address =
+                        document.getElementById(
+                            "address"
+                        ).value.trim();
 
 
-                const qty =
-                    Number(quantity.value);
+                    const selectedProduct =
+                        product.value;
 
 
-                const price =
-                    Number(
-                        product.options[
-                            product.selectedIndex
-                        ].dataset.price
-                    );
+                    const qty =
+                        Number(quantity.value);
 
 
-                const total =
-                    price * qty;
+                    const price =
+                        Number(
+                            product.options[
+                                product.selectedIndex
+                            ].dataset.price
+                        );
 
 
-                if (
-                    !name ||
-                    !phone ||
-                    !address ||
-                    qty < 1
-                ) {
+                    const total =
+                        price * qty;
+
+
+                    if (
+                        !name ||
+                        !phone ||
+                        !address ||
+                        qty < 1
+                    ) {
+
+                        message.style.color =
+                            "#ff4444";
+
+                        message.textContent =
+                            "Please fill all details.";
+
+                        return;
+
+                    }
+
+
+                    /* =========================
+                       YOUR NEW WHATSAPP NUMBER
+                       ========================= */
+
+                    const whatsappNumber =
+                        "923208046712";
+
+
+                    const orderText =
+                        "New Order - Madiha Digital Store\n\n" +
+                        "Name: " + name + "\n" +
+                        "Phone: " + phone + "\n" +
+                        "Address: " + address + "\n" +
+                        "Product: " + selectedProduct + "\n" +
+                        "Quantity: " + qty + "\n" +
+                        "Total: Rs. " + total;
+
+
+                    const whatsappURL =
+                        "https://wa.me/" +
+                        whatsappNumber +
+                        "?text=" +
+                        encodeURIComponent(
+                            orderText
+                        );
+
 
                     message.style.color =
-                        "#ff4444";
+                        "#25d366";
 
                     message.textContent =
-                        "Please fill all details.";
+                        "Opening WhatsApp... ❤️";
 
-                    return;
+
+                    setTimeout(function () {
+
+                        window.open(
+                            whatsappURL,
+                            "_blank"
+                        );
+
+                    }, 500);
 
                 }
-
-
-                const whatsappNumber =
-                    "923208046712";
-
-
-                const orderText =
-                    "New Order - Madiha Digital Store\n\n" +
-                    "Name: " + name + "\n" +
-                    "Phone: " + phone + "\n" +
-                    "Address: " + address + "\n" +
-                    "Product: " + selectedProduct + "\n" +
-                    "Quantity: " + qty + "\n" +
-                    "Total: Rs. " + total;
-
-
-                const whatsappURL =
-                    "https://wa.me/" +
-                    whatsappNumber +
-                    "?text=" +
-                    encodeURIComponent(orderText);
-
-
-                message.style.color =
-                    "#25d366";
-
-                message.textContent =
-                    "Opening WhatsApp... ❤️";
-
-
-                setTimeout(function () {
-
-                    window.open(
-                        whatsappURL,
-                        "_blank"
-                    );
-
-                }, 500);
-
-            });
+            );
 
     </script>
 
