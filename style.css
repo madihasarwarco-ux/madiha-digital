@@ -4,10 +4,15 @@
     box-sizing: border-box;
 }
 
+html,
 body {
-    font-family: Arial, sans-serif;
     background: #000000;
     color: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
 }
 
 
@@ -74,42 +79,32 @@ PRODUCTS
     width: 90%;
     max-width: 1000px;
     margin: 20px auto 50px;
-
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-
     gap: 30px;
 }
 
 .product-card {
     background: #111111;
     color: #ffffff;
-
     border: 1px solid #333333;
     border-radius: 18px;
     overflow: hidden;
-
     box-shadow: 0 5px 25px rgba(255, 20, 147, 0.25);
-
     transition: 0.3s;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-
     border-color: #e91e63;
-
     box-shadow: 0 8px 30px rgba(255, 20, 147, 0.45);
 }
 
 .product-card > img {
     width: 100%;
     height: 300px;
-
     object-fit: contain;
-
     background: #111111;
-
     padding: 15px;
 }
 
@@ -120,17 +115,13 @@ PRODUCTS
 
 .product-info h3 {
     color: #ff69b4;
-
     font-size: 21px;
-
     margin-bottom: 12px;
 }
 
 .description {
     color: #dddddd;
-
     line-height: 1.5;
-
     margin-bottom: 15px;
 }
 
@@ -140,19 +131,14 @@ PRODUCTS
 
 .new-price {
     font-size: 24px;
-
     font-weight: bold;
-
     color: #ff69b4;
 }
 
 .offer {
     display: block;
-
     color: #25d366;
-
     font-weight: bold;
-
     margin-bottom: 18px;
 }
 
@@ -163,25 +149,17 @@ BUY BUTTON
 
 .buy-btn {
     display: inline-block;
-
     background: #e91e63;
-
     color: #ffffff;
-
     text-decoration: none;
-
     padding: 12px 28px;
-
     border-radius: 25px;
-
     font-weight: bold;
-
     transition: 0.3s;
 }
 
 .buy-btn:hover {
     background: #ff1493;
-
     transform: scale(1.05);
 }
 
@@ -192,15 +170,10 @@ FOOTER
 
 footer {
     background: #000000;
-
     color: #aaaaaa;
-
     text-align: center;
-
     padding: 20px 10px;
-
     margin-top: 30px;
-
     border-top: 1px solid #333333;
 }
 
@@ -211,29 +184,17 @@ CHAT BUTTON
 
 .chat-button {
     position: fixed;
-
     right: 20px;
-
     bottom: 85px;
-
     width: 55px;
-
     height: 55px;
-
     border: none;
-
     border-radius: 50%;
-
     background: #e91e63;
-
     color: #ffffff;
-
     font-size: 25px;
-
     cursor: pointer;
-
     box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
-
     z-index: 1000;
 }
 
@@ -248,29 +209,17 @@ CHAT BOX
 
 .chat-box {
     position: fixed;
-
     right: 20px;
-
     bottom: 150px;
-
     width: 320px;
-
     max-width: calc(100% - 40px);
-
     background: #111111;
-
     color: #ffffff;
-
     border: 1px solid #333333;
-
     border-radius: 15px;
-
     box-shadow: 0 5px 30px rgba(255, 20, 147, 0.35);
-
     overflow: hidden;
-
     display: none;
-
     z-index: 999;
 }
 
@@ -279,27 +228,18 @@ CHAT BOX
 
 .chat-header {
     background: #e91e63;
-
     color: #ffffff;
-
     padding: 15px;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 }
 
 .chat-header button {
     background: none;
-
     border: none;
-
     color: #ffffff;
-
     font-size: 25px;
-
     cursor: pointer;
 }
 
@@ -308,39 +248,28 @@ CHAT BOX
 
 .chat-messages {
     height: 250px;
-
     padding: 15px;
-
     overflow-y: auto;
-
     background: #000000;
 }
 
 .message {
     padding: 10px 13px;
-
     border-radius: 12px;
-
     margin-bottom: 10px;
-
     max-width: 85%;
-
     line-height: 1.4;
 }
 
 .received {
     background: #222222;
-
     color: #ffffff;
-
     border: 1px solid #333333;
 }
 
 .sent {
     background: #e91e63;
-
     color: #ffffff;
-
     margin-left: auto;
 }
 
@@ -351,11 +280,8 @@ CHAT MESSAGE DP
 
 .message-row {
     display: flex;
-
     align-items: flex-end;
-
     gap: 8px;
-
     margin-bottom: 10px;
 }
 
@@ -365,15 +291,10 @@ CHAT MESSAGE DP
 
 .chat-dp {
     width: 32px;
-
     height: 32px;
-
     border-radius: 50%;
-
     object-fit: cover;
-
     border: 2px solid #e91e63;
-
     flex-shrink: 0;
 }
 
@@ -386,27 +307,18 @@ CHAT MESSAGE DP
 
 .chat-input-area {
     display: flex;
-
     padding: 10px;
-
     border-top: 1px solid #333333;
-
     background: #111111;
 }
 
 .chat-input-area input {
     flex: 1;
-
     padding: 10px;
-
     border: 1px solid #444444;
-
     border-radius: 20px;
-
     outline: none;
-
     background: #000000;
-
     color: #ffffff;
 }
 
@@ -416,17 +328,11 @@ CHAT MESSAGE DP
 
 .chat-input-area button {
     margin-left: 8px;
-
     padding: 10px 15px;
-
     border: none;
-
     border-radius: 20px;
-
     background: #e91e63;
-
     color: #ffffff;
-
     cursor: pointer;
 }
 
@@ -437,25 +343,15 @@ WHATSAPP BUTTON
 
 .whatsapp-btn {
     position: fixed;
-
     right: 20px;
-
     bottom: 20px;
-
     background: #25d366;
-
     color: #ffffff;
-
     text-decoration: none;
-
     padding: 13px 20px;
-
     border-radius: 25px;
-
     font-weight: bold;
-
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-
     z-index: 1000;
 }
 
@@ -470,51 +366,36 @@ PLACE ORDER PAGE
 
 .order-section {
     width: 90%;
-
     max-width: 600px;
-
     margin: 40px auto;
 }
 
 .order-card {
     background: #111111;
-
     color: #ffffff;
-
     padding: 30px;
-
     border: 1px solid #333333;
-
     border-radius: 18px;
-
     box-shadow: 0 5px 25px rgba(255, 20, 147, 0.3);
 }
 
 .order-card h2 {
     text-align: center;
-
     color: #ff69b4;
-
     margin-bottom: 10px;
 }
 
 .order-subtitle {
     text-align: center;
-
     color: #dddddd;
-
     margin-bottom: 25px;
 }
 
 .order-card label {
     display: block;
-
     color: #ffffff;
-
     font-weight: bold;
-
     margin-top: 15px;
-
     margin-bottom: 7px;
 }
 
@@ -522,19 +403,12 @@ PLACE ORDER PAGE
 .order-card textarea,
 .order-card select {
     width: 100%;
-
     padding: 12px;
-
     border: 1px solid #444444;
-
     border-radius: 10px;
-
     font-size: 15px;
-
     outline: none;
-
     background: #000000;
-
     color: #ffffff;
 }
 
@@ -545,7 +419,6 @@ PLACE ORDER PAGE
 
 .order-card select option {
     background: #111111;
-
     color: #ffffff;
 }
 
@@ -555,51 +428,32 @@ PLACE ORDER PAGE
 
 .total-box {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     background: #000000;
-
     border: 1px solid #333333;
-
     color: #ffffff;
-
     padding: 15px;
-
     border-radius: 10px;
-
     margin-top: 20px;
-
     font-size: 18px;
 }
 
 .total-box strong {
     color: #ff69b4;
-
     font-size: 22px;
 }
 
 .order-btn {
     width: 100%;
-
     border: none;
-
     background: #e91e63;
-
     color: #ffffff;
-
     padding: 14px;
-
     border-radius: 25px;
-
     font-size: 17px;
-
     font-weight: bold;
-
     cursor: pointer;
-
     margin-top: 20px;
 }
 
@@ -609,23 +463,16 @@ PLACE ORDER PAGE
 
 #orderMessage {
     text-align: center;
-
     margin-top: 15px;
-
     font-weight: bold;
 }
 
 .back-btn {
     display: block;
-
     text-align: center;
-
     margin-top: 20px;
-
     color: #ff69b4;
-
     text-decoration: none;
-
     font-weight: bold;
 }
 
@@ -642,7 +489,6 @@ MOBILE
 
     .product-section {
         grid-template-columns: 1fr;
-
         width: 92%;
     }
 
@@ -652,7 +498,6 @@ MOBILE
 
     .chat-box {
         right: 10px;
-
         bottom: 145px;
     }
 
@@ -662,12 +507,10 @@ MOBILE
 
     .whatsapp-btn {
         right: 15px;
-
         bottom: 15px;
     }
 
     .order-card {
         padding: 20px;
     }
-
 }

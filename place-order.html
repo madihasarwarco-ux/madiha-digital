@@ -16,6 +16,8 @@
 
 <body>
 
+    <!-- HEADER -->
+
     <header>
 
         <img
@@ -31,6 +33,8 @@
     </header>
 
 
+    <!-- ORDER SECTION -->
+
     <section class="order-section">
 
         <div class="order-card">
@@ -41,6 +45,8 @@
                 Please enter your details below
             </p>
 
+
+            <!-- NAME -->
 
             <label for="name">
                 Your Name
@@ -53,6 +59,8 @@
             >
 
 
+            <!-- PHONE NUMBER -->
+
             <label for="phone">
                 Phone Number
             </label>
@@ -60,9 +68,11 @@
             <input
                 type="tel"
                 id="phone"
-                placeholder="03208046712"
+                placeholder="Enter your phone number"
             >
 
+
+            <!-- ADDRESS -->
 
             <label for="address">
                 Delivery Address
@@ -75,6 +85,8 @@
             ></textarea>
 
 
+            <!-- PRODUCT -->
+
             <label for="product">
                 Select Product
             </label>
@@ -83,20 +95,22 @@
 
                 <option
                     value="Natural Radiance Face Cream"
-                    data-price="600"
+                    data-price="1000"
                 >
-                    Natural Radiance Face Cream - Rs. 600
+                    Natural Radiance Face Cream - Rs. 1000
                 </option>
 
                 <option
-                    value="Hathon Pao Ki Cream"
-                    data-price="700"
+                    value="Hands & Feet Cream"
+                    data-price="900"
                 >
-                    Hathon Pao Ki Cream - Rs. 700
+                    Hands & Feet Cream - Rs. 900
                 </option>
 
             </select>
 
+
+            <!-- QUANTITY -->
 
             <label for="quantity">
                 Quantity
@@ -110,6 +124,8 @@
             >
 
 
+            <!-- TOTAL -->
+
             <div class="total-box">
 
                 <span>
@@ -117,11 +133,13 @@
                 </span>
 
                 <strong id="totalPrice">
-                    Rs. 600
+                    Rs. 1000
                 </strong>
 
             </div>
 
+
+            <!-- ORDER BUTTON -->
 
             <button
                 type="button"
@@ -135,6 +153,8 @@
             <p id="orderMessage"></p>
 
 
+            <!-- BACK BUTTON -->
+
             <a
                 href="index.html"
                 class="back-btn"
@@ -147,6 +167,8 @@
     </section>
 
 
+    <!-- FOOTER -->
+
     <footer>
 
         <p>
@@ -156,6 +178,8 @@
 
     </footer>
 
+
+    <!-- JAVASCRIPT -->
 
     <script>
 
@@ -168,6 +192,10 @@
         const totalPrice =
             document.getElementById("totalPrice");
 
+
+        // =========================
+        // CALCULATE TOTAL
+        // =========================
 
         function calculateTotal() {
 
@@ -198,6 +226,10 @@
             calculateTotal
         );
 
+
+        // =========================
+        // PLACE ORDER
+        // =========================
 
         document
             .getElementById("orderButton")
@@ -249,6 +281,10 @@
                         price * qty;
 
 
+                    // =========================
+                    // CHECK DETAILS
+                    // =========================
+
                     if (
                         !name ||
                         !phone ||
@@ -267,13 +303,17 @@
                     }
 
 
-                    /* =========================
-                       YOUR NEW WHATSAPP NUMBER
-                       ========================= */
+                    // =========================
+                    // YOUR WHATSAPP NUMBER
+                    // =========================
 
                     const whatsappNumber =
                         "923208046712";
 
+
+                    // =========================
+                    // ORDER MESSAGE
+                    // =========================
 
                     const orderText =
                         "New Order - Madiha Digital Store\n\n" +
@@ -284,6 +324,10 @@
                         "Quantity: " + qty + "\n" +
                         "Total: Rs. " + total;
 
+
+                    // =========================
+                    // WHATSAPP URL
+                    // =========================
 
                     const whatsappURL =
                         "https://wa.me/" +
@@ -301,14 +345,21 @@
                         "Opening WhatsApp... ❤️";
 
 
-                    setTimeout(function () {
+                    // =========================
+                    // OPEN WHATSAPP
+                    // =========================
 
-                        window.open(
-                            whatsappURL,
-                            "_blank"
-                        );
+                    setTimeout(
+                        function () {
 
-                    }, 500);
+                            window.open(
+                                whatsappURL,
+                                "_blank"
+                            );
+
+                        },
+                        500
+                    );
 
                 }
             );
